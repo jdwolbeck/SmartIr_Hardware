@@ -11,6 +11,5 @@ void __attribute__((interrupt, no_auto_psv)) _U2RXInterrupt(void)
 
 void __attribute__((interrupt(auto_psv))) _INT0Interrupt (void)
 {
-    ctr++;
     IFS0bits.INT0IF = 0;
 }
