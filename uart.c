@@ -3,29 +3,29 @@
 #include "uart.h"
 #include "main.h"
 #include "i2c.h"
+#include "app.h"
+#include "eeprom.h"
 #include "lux.h"
 
 void uart(char RXread)
 {
-    int value = 0;
-    char valueStr[10] = "";
+    long value = 0;
     switch (RXread)
     {
+        case 'r':
+            eepromRead(0);
+            break;
+        case 'w':
+            eepromWrite(0, RXread);
+            break;
         case '1':
             value = luxRead();
-            sprintf(valueStr, "%g", value);
-            int i;
-            while(valueStr[i] != '\0')
-            {
-                U2TXREG = valueStr[i++];
-            }
-            U2TXREG = 0x0A;
-            U2TXREG = 0x0D;
+            printInt(value);
             break;
         case '2':
-            U2TXREG = 'A';
-            U2TXREG = 0x0A;
-            U2TXREG = 0x0D;
+            U1TXREG = 'A';
+            U1TXREG = 0x0A;
+            U1TXREG = 0x0D;
             break;
         default:
             break;   

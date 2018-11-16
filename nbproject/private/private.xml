@@ -6,8 +6,11 @@
             <file>file:/C:/Projects/ECE%20461/mplabs_lux_sensor/initialization.c</file>
             <file>file:/C:/Projects/ECE%20461/mplabs_lux_sensor/uart.c</file>
             <file>file:/C:/Projects/ECE%20461/mplabs_lux_sensor/app.c</file>
+            <file>file:/C:/Projects/ECE%20461/mplabs_lux_sensor/i2c.h</file>
             <file>file:/C:/Projects/ECE%20461/mplabs_lux_sensor/lux.h</file>
             <file>file:/C:/Projects/ECE%20461/mplabs_lux_sensor/main.c</file>
+            <file>file:/C:/Projects/ECE%20461/mplabs_lux_sensor/i2c.c</file>
+            <file>file:/C:/Projects/ECE%20461/mplabs_lux_sensor/app.h</file>
             <file>file:/C:/Projects/ECE%20461/mplabs_lux_sensor/lux.c</file>
         </group>
     </open-files>

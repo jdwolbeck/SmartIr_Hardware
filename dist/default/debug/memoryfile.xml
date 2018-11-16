@@ -4,15 +4,15 @@
   <executable name="dist/default/debug/mplabs_lux_sensor.debug.elf">
     <memory name="data">
       <units>bytes</units>
-      <length>2048</length>
-      <used>206</used>
-      <free>1842</free>
+      <length>16384</length>
+      <used>88</used>
+      <free>16296</free>
     </memory>
     <memory name="program">
       <units>bytes</units>
-      <length>16128</length>
-      <used>7626</used>
-      <free>8502</free>
+      <length>263424</length>
+      <used>3246</used>
+      <free>260178</free>
     </memory>
   </executable>
 </project>

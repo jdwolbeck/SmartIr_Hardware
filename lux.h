@@ -1,5 +1,5 @@
 extern unsigned int broadband, infrared;
 
-int luxRead(void);
+long luxRead(void);
 void luxOn(void);
 void luxOff(void);
