@@ -23,7 +23,6 @@ void uart(char RXread)
             printInt(value);
             break;
         case '2':
-            U1TXREG = 'A';
             U1TXREG = 0x0A;
             U1TXREG = 0x0D;
             break;

@@ -63,7 +63,8 @@ void InitApp(void)
     i2cBusReset();
     InitUART();
     InitInt0();
-    InitI2C(); 
+    InitI2C();
+    InitADC();
 }
 
 void InitClock(void)
@@ -130,9 +131,9 @@ void InitI2C(void)
 {
     I2C1CONL = 0x1000;
     I2C1STAT = 0;
-    I2C1CONHbits.SDAHT = 1;     //SDA Hold time (1 = 300nS, 0= 100nS)
-    I2C1BRG = 0x12;
-    I2C1ADD = 0x39;
+    I2C1CONHbits.SDAHT = 0;     //SDA Hold time (1 = 300nS, 0= 100nS)
+    I2C1BRG = 0x03;
+    //I2C1ADD = 0x49;
     //I2C1MSK = 0x00;
     IFS1bits.MI2C1IF = 0;
     I2C1CONLbits.I2CEN = 1;     //enables i2c 1 = Enable.
@@ -140,4 +141,9 @@ void InitI2C(void)
 //    //Read Buffer to clear it out;
 //    int clear = 0;
 //    clear = I2C1RCV;
+}
+
+void InitADC(void)
+{
+    
 }
