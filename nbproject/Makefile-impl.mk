@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=mplabs_lux_sensor
+PROJECTNAME=SmartIr_Hardware
 
 # Active Configuration
 DEFAULTCONF=default
