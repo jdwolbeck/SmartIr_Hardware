@@ -127,14 +127,12 @@ bool myWriteByte(unsigned short bAdd, unsigned char bData)
  
 unsigned char myReadByte(unsigned short bAdd)
 {
-    LATBbits.LATB14 = 1;
     unsigned char value;
     unsigned short highAdd = (bAdd >> 8) & 0xFF;
     unsigned short lowAdd = (bAdd & 0x00FF);
     i2cStart();
     i2cWrite(0b10100000);
     i2cAck();
-    LATBbits.LATB13 =1;
     i2cWrite(highAdd);
     i2cAck();
     i2cWrite(lowAdd);

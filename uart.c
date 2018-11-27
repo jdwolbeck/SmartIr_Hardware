@@ -10,8 +10,12 @@
 void uart(char RXread)
 {
     long value = 0;
+    int adcVal = 1;
     switch (RXread)
     {
+        case 'a':
+            adcVal = ADC1BUF0;
+            printInt(adcVal);
         case 'r':
             eepromRead(0);
             break;

@@ -145,5 +145,12 @@ void InitI2C(void)
 
 void InitADC(void)
 {
-    
+    ANSBbits.ANSB13 = 1; //Set RB13 (AN8) as analog
+    AD1CON1bits.SSRC = 0b111; //Allow auto conversion
+    AD1CON1bits.ASAM = 1;   //Sampling begins immediately after last conversion
+    AD1CON2 = 0;
+    AD1CON3bits.SAMC = 0b00111; //Auto-Sample time bits
+    AD1CHS = 8; //Assign AN8 as ADC
+    AD1CSSL = 0;
+    AD1CON1bits.ADON = 1;
 }
