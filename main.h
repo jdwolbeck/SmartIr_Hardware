@@ -1,1 +1,0 @@
-extern int eepromBool, eepromW, eepromR, eepromAddr, eepromCtr;

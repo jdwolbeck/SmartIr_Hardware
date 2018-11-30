@@ -7,8 +7,7 @@
 extern "C" {
 #endif /* __cplusplus */
 
-    int adc1Grab(void);
-    int adc2Grab(void);
+    int adcGrab(int);
 
 #ifdef	__cplusplus
 }

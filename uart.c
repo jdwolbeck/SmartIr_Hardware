@@ -14,13 +14,13 @@ void uart(char RXread)
     switch (RXread)
     {
         case 'a':
-            adcVal = adc1Grab();
+            adcVal = adcGrab(0);
             printInt(adcVal);
             U1TXREG = 0x0A;
             U1TXREG = 0x0D;
             break;
         case 'b':
-            adcVal = adc2Grab();
+            adcVal = adcGrab(1);
             printInt(adcVal);
             U1TXREG = 0x0A;
             U1TXREG = 0x0D;

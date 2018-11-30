@@ -1,26 +1,21 @@
-
 #include <xc.h>
 #include "app.h"
 #include "adc.h"
 
-int adc1Grab(void)
+int adcGrab(int select)
 {
-    LATBbits.LATB13 = 0;
-    LATBbits.LATB14 = 0;
-    AD1CON1bits.SAMP = 1;
-    delay(10);
-    AD1CON1bits.SAMP = 0;
-    LATBbits.LATB14 = 1;
-    while(!AD1CON1bits.DONE);
-    LATBbits.LATB13 = 1;
-    return ADC1BUF8;
-}
-
-int adc2Grab(void)
-{
-    AD1CON1bits.SAMP = 1;
-    delay(10);
-    AD1CON1bits.SAMP = 0;
-    delay(10);
-    return ADC1BUF0;
+    int ADCValue0 = 0;
+    int ADCValue1 = 0;
+    IFS0bits.AD1IF = 0;
+    AD1CON1bits.ASAM = 1;
+    
+    while(!IFS0bits.AD1IF){};
+    AD1CON1bits.ASAM = 0;
+    ADCValue0 = ADC1BUF0;
+    ADCValue1 = ADC1BUF1;
+    
+    if(select)
+        return ADCValue1;
+    else
+        return ADCValue0;
 }

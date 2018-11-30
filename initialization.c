@@ -98,6 +98,8 @@ void InitGPIO(void)
     TRISB = 0x1FEF;
     //Set pins as digital input pins
     ANSB = 0x0000;
+    ANSBbits.ANSB12 = 1; //Set RB13 (AN8) as analog
+    ANSBbits.ANSB2 = 1; //Set RB2 (AN4) as analog
     LATBbits.LATB8 = 1;     //Set Bus to idle state (both lines high)
     LATBbits.LATB9 = 1; 
     ODCBbits.ODCB8 = 1;     //Open-Drain mode
@@ -150,17 +152,16 @@ void InitI2C(void)
 
 void InitADC(void)
 {
-    ANSBbits.ANSB12 = 1; //Set RB13 (AN8) as analog
-    ANSBbits.ANSB2 = 1; //Set RB2 (AN4) as analog
+    AD1CON1 = 0;                //Control Register 1
+    AD1CON1bits.SSRC = 0x7;     //Internal counter triggers conversion
     
-    AD1CON1bits.SSRC = 0b000; //Clear SAMC by hardware
-    AD1CON1bits.ASAM = 0;   //Sampling begins immediately after SAMP is set
-    AD1CON2 = 0;
-    AD1CON2bits.ALTS = 1;
-    AD1CON3bits.SAMC = 0b00000; //Auto-Sample time bits
-    AD1CON2bits.CSCNA = 0;
-    AD1CHSbits.CH0SA = 0b1000;
-    AD1CHSbits.CH0SB = 0b0100; //Assign AN8 and AN4 as ADC
-    //AD1CSSL = 8+4;
-    AD1CON1bits.ADON = 1;
+    AD1CON2 = 0x0000;           //Control Register 2
+    AD1CON2bits.SMPI = 0b00001; //Cause interrupt (AD1IF) at the completion of every other sample
+    AD1CON2bits.CSCNA = 1;      //Scan inputs are selected by AD1CSSL as MUX A inputs
+    
+    AD1CON3 = 0;                //Control Register 3
+    AD1CON3bits.SAMC = 0b01111; //Sample time = 1Tad
+    
+    AD1CSSL = 0x0110;           //Scan AN8 and AN4
+    AD1CON1bits.ADON = 1;       //Turn on ADC
 }

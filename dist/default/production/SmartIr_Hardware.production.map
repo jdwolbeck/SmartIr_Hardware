@@ -6,7 +6,7 @@ Tool Name:
 Command:
   -p24FJ256GA702 \
   -o \
-  dist/default/production/mplabs_lux_sensor.production.elf \
+  dist/default/production/SmartIr_Hardware.production.elf \
   -Lc:/program files (x86)/microchip/xc16/v1.35/bin/bin/.. \
   -Lc:/program files (x86)/microchip/xc16/v1.35/bin/bin/../../lib \
   -Lc:/program files (x86)/microchip/xc16/v1.35/bin/bin/../../support/PIC24E/gld \
@@ -38,7 +38,7 @@ Command:
   --stackguard=16 \
   --no-force-link \
   --smart-io \
-  -Map=dist/default/production/mplabs_lux_sensor.production.map \
+  -Map=dist/default/production/SmartIr_Hardware.production.map \
   --report-mem \
   --memorysummary \
   dist/default/production/memoryfile.xml \
@@ -96,20 +96,17 @@ xc16-ld 1.35 (A)
 section                    address   length (PC units)   length (bytes) (dec)
 -------                    -------   -----------------   --------------------
 .text                        0x100               0x1be           0x29d  (669)
-.text                        0x2be               0x526           0x7b9  (1977)
-.dinit                       0x7e4                0x10            0x18  (24)
+.text                        0x2be               0x52c           0x7c2  (1986)
 
-                 Total "program" memory used (bytes):          0xa6e  (2670) 1%
+                 Total "program" memory used (bytes):          0xa5f  (2655) 1%
 
 
 "data" Memory  [Origin = 0x800, Length = 0x4000]
 
 section                    address      alignment gaps    total length  (dec)
 -------                    -------      --------------    -------------------
-.nbss                        0x800                   0             0x8  (8)
-.ndata                       0x808                   0             0x2  (2)
 
-                 Total "data" memory used (bytes):            0xa  (10) <1%
+                 Total "data" memory used (bytes):              0  (0) 
 
 
 Dynamic Memory Usage
@@ -117,26 +114,10 @@ Dynamic Memory Usage
 region                     address                      maximum length  (dec)
 ------                     -------                      ---------------------
 heap                             0                                   0  (0)
-stack                        0x80a                              0x3ff6  (16374)
+stack                        0x800                              0x4000  (16384)
 
-                 Maximum dynamic memory (bytes):         0x3ff6  (16374)
+                 Maximum dynamic memory (bytes):         0x4000  (16384)
 
-
-External Symbols in Data Memory (by address):
-
-                    0x0800                  _eepromAddr
-                    0x0802                  _eepromBool
-                    0x0804                  _eepromW
-                    0x0806                  _eepromR
-                    0x0808                  _eepromCtr
-
-External Symbols in Data Memory (by name):
-
-                    0x0800                  _eepromAddr
-                    0x0802                  _eepromBool
-                    0x0808                  _eepromCtr
-                    0x0806                  _eepromR
-                    0x0804                  _eepromW
 
 External Symbols in Program Memory (by address):
 
@@ -167,28 +148,27 @@ External Symbols in Program Memory (by address):
                   0x00057e                  _InitApp
                   0x000590                  _InitClock
                   0x0005c8                  _InitGPIO
-                  0x0005e2                  _InitUART
-                  0x000618                  _InitInt0
-                  0x000630                  _InitI2C
-                  0x000646                  _InitADC
-                  0x00067e                  _luxOn
-                  0x00069a                  _luxOff
-                  0x0006b6                  _luxRead
-                  0x000718                  _uart
-                  0x000798                  _adc1Grab
-                  0x0007ba                  _adc2Grab
-                  0x0007ce                  _main
+                  0x0005e6                  _InitUART
+                  0x00061c                  _InitInt0
+                  0x000634                  _InitI2C
+                  0x00064a                  _InitADC
+                  0x000680                  _luxOn
+                  0x00069c                  _luxOff
+                  0x0006b8                  _luxRead
+                  0x00071a                  _uart
+                  0x00079e                  _adcGrab
+                  0x0007d4                  _main
                   0x02af00                  __FSEC.sec
 
 External Symbols in Program Memory (by name):
 
-                  0x000646                  _InitADC
+                  0x00064a                  _InitADC
                   0x00057e                  _InitApp
                   0x000590                  _InitClock
                   0x0005c8                  _InitGPIO
-                  0x000630                  _InitI2C
-                  0x000618                  _InitInt0
-                  0x0005e2                  _InitUART
+                  0x000634                  _InitI2C
+                  0x00061c                  _InitInt0
+                  0x0005e6                  _InitUART
                   0x000256                  __DefaultInterrupt
                   0x02af00                  __FSEC.sec
                   0x00023a                  __INT0Interrupt
@@ -201,8 +181,7 @@ External Symbols in Program Memory (by name):
                   0x000152                  __data_init_da
                   0x00013c                  __psv_init
                   0x000100                  __resetPRI
-                  0x000798                  _adc1Grab
-                  0x0007ba                  _adc2Grab
+                  0x00079e                  _adcGrab
                   0x0002be                  _delay
                   0x000444                  _i2cAck
                   0x00042a                  _i2cIdle
@@ -213,14 +192,14 @@ External Symbols in Program Memory (by name):
                   0x00048c                  _i2cStart
                   0x0004ea                  _i2cStop
                   0x0004a0                  _i2cWrite
-                  0x00069a                  _luxOff
-                  0x00067e                  _luxOn
-                  0x0006b6                  _luxRead
-                  0x0007ce                  _main
+                  0x00069c                  _luxOff
+                  0x000680                  _luxOn
+                  0x0006b8                  _luxRead
+                  0x0007d4                  _main
                   0x00053a                  _myReadByte
                   0x0004fc                  _myWriteByte
                   0x0002e8                  _printInt
-                  0x000718                  _uart
+                  0x00071a                  _uart
 
 Memory Configuration
 
@@ -343,30 +322,30 @@ __FDEVOPT1
 .comment
  *(.comment)
 
-.debug_info       0x000000       0x3b28
+.debug_info       0x000000       0x3907
  *(.debug_info)
- .debug_info      0x000000        0x35d build/default/production/main.o
- .debug_info      0x00035d       0x21d6 build/default/production/initialization.o
- .debug_info      0x002533        0x73f build/default/production/i2c.o
- .debug_info      0x002c72        0x1b2 build/default/production/app.o
- .debug_info      0x002e24        0x1ac build/default/production/uart.o
- .debug_info      0x002fd0        0x500 build/default/production/interrupt.o
- .debug_info      0x0034d0        0x182 build/default/production/lux.o
- .debug_info      0x003652        0x4d6 build/default/production/adc.o
+ .debug_info      0x000000        0x2e6 build/default/production/main.o
+ .debug_info      0x0002e6       0x2025 build/default/production/initialization.o
+ .debug_info      0x00230b        0x73e build/default/production/i2c.o
+ .debug_info      0x002a49        0x1b1 build/default/production/app.o
+ .debug_info      0x002bfa        0x1ab build/default/production/uart.o
+ .debug_info      0x002da5        0x4ff build/default/production/interrupt.o
+ .debug_info      0x0032a4        0x181 build/default/production/lux.o
+ .debug_info      0x003425        0x4e2 build/default/production/adc.o
  *(.gnu.linkonce.wi.*)
 
-.debug_abbrev     0x000000        0x5fd
+.debug_abbrev     0x000000        0x641
  *(.debug_abbrev)
- .debug_abbrev    0x000000         0xae build/default/production/main.o
- .debug_abbrev    0x0000ae         0xfa build/default/production/initialization.o
- .debug_abbrev    0x0001a8        0x12a build/default/production/i2c.o
- .debug_abbrev    0x0002d2         0x79 build/default/production/app.o
- .debug_abbrev    0x00034b         0x79 build/default/production/uart.o
- .debug_abbrev    0x0003c4        0x129 build/default/production/interrupt.o
- .debug_abbrev    0x0004ed         0x5a build/default/production/lux.o
- .debug_abbrev    0x000547         0xb6 build/default/production/adc.o
+ .debug_abbrev    0x000000         0x9d build/default/production/main.o
+ .debug_abbrev    0x00009d         0xfa build/default/production/initialization.o
+ .debug_abbrev    0x000197        0x12a build/default/production/i2c.o
+ .debug_abbrev    0x0002c1         0x79 build/default/production/app.o
+ .debug_abbrev    0x00033a         0x79 build/default/production/uart.o
+ .debug_abbrev    0x0003b3        0x129 build/default/production/interrupt.o
+ .debug_abbrev    0x0004dc         0x5a build/default/production/lux.o
+ .debug_abbrev    0x000536        0x10b build/default/production/adc.o
 
-.debug_line       0x000000        0x7ab
+.debug_line       0x000000        0x7a6
  *(.debug_line)
  .debug_line      0x000000         0xed build/default/production/main.o
  .debug_line      0x0000ed        0x138 build/default/production/initialization.o
@@ -375,9 +354,9 @@ __FDEVOPT1
  .debug_line      0x000463        0x101 build/default/production/uart.o
  .debug_line      0x000564         0xf4 build/default/production/interrupt.o
  .debug_line      0x000658         0x5f build/default/production/lux.o
- .debug_line      0x0006b7         0xf4 build/default/production/adc.o
+ .debug_line      0x0006b7         0xef build/default/production/adc.o
 
-.debug_frame      0x000000        0x3f8
+.debug_frame      0x000000        0x3dc
  *(.debug_frame)
  .debug_frame     0x000000         0x30 build/default/production/main.o
  .debug_frame     0x000030         0xd8 build/default/production/initialization.o
@@ -386,15 +365,15 @@ __FDEVOPT1
  .debug_frame     0x00029c         0x30 build/default/production/uart.o
  .debug_frame     0x0002cc         0x78 build/default/production/interrupt.o
  .debug_frame     0x000344         0x68 build/default/production/lux.o
- .debug_frame     0x0003ac         0x4c build/default/production/adc.o
+ .debug_frame     0x0003ac         0x30 build/default/production/adc.o
 
-.debug_str        0x000000        0x17b
+.debug_str        0x000000        0x170
  *(.debug_str)
  .debug_str       0x000000          0x9 build/default/production/main.o
- .debug_str       0x000009        0x10c build/default/production/initialization.o
- .debug_str       0x000115         0x2c build/default/production/i2c.o
- .debug_str       0x000141         0x13 build/default/production/interrupt.o
- .debug_str       0x000154         0x27 build/default/production/adc.o
+ .debug_str       0x000009        0x101 build/default/production/initialization.o
+ .debug_str       0x00010a         0x2c build/default/production/i2c.o
+ .debug_str       0x000136         0x13 build/default/production/interrupt.o
+ .debug_str       0x000149         0x27 build/default/production/adc.o
 
 .debug_loc
  *(.debug_loc)
@@ -403,24 +382,24 @@ __FDEVOPT1
  *(.debug_macinfo)
 
 .debug_pubnames
-                  0x000000        0x247
+                  0x000000        0x1f5
  *(.debug_pubnames)
  .debug_pubnames
-                  0x000000         0x5f build/default/production/main.o
+                  0x000000         0x1b build/default/production/main.o
  .debug_pubnames
-                  0x00005f         0x6b build/default/production/initialization.o
+                  0x00001b         0x6b build/default/production/initialization.o
  .debug_pubnames
-                  0x0000ca         0xa2 build/default/production/i2c.o
+                  0x000086         0xa2 build/default/production/i2c.o
  .debug_pubnames
-                  0x00016c         0x29 build/default/production/app.o
+                  0x000128         0x29 build/default/production/app.o
  .debug_pubnames
-                  0x000195         0x1b build/default/production/uart.o
+                  0x000151         0x1b build/default/production/uart.o
  .debug_pubnames
-                  0x0001b0         0x38 build/default/production/interrupt.o
+                  0x00016c         0x38 build/default/production/interrupt.o
  .debug_pubnames
-                  0x0001e8         0x33 build/default/production/lux.o
+                  0x0001a4         0x33 build/default/production/lux.o
  .debug_pubnames
-                  0x00021b         0x2c build/default/production/adc.o
+                  0x0001d7         0x1e build/default/production/adc.o
 
 .debug_ranges
  *(.debug_ranges)
@@ -1776,71 +1755,59 @@ LOAD c:/program files (x86)/microchip/xc16/v1.35/bin/bin/../../lib\liblega-pic30
 LOAD c:/program files (x86)/microchip/xc16/v1.35/bin/bin/../../lib\libm-elf.a
 LOAD c:/program files (x86)/microchip/xc16/v1.35/bin/bin/../../lib\liblega-c-elf.a
 END GROUP
-OUTPUT(dist/default/production/mplabs_lux_sensor.production.elf elf32-pic30)
+OUTPUT(dist/default/production/SmartIr_Hardware.production.elf elf32-pic30)
 LOAD /CW/_FSEC
 LOAD default_isr
-LOAD data_init
 
 .debug_pubtypes
-                  0x0000c0        0x489
+                  0x0000c0        0x468
  .debug_pubtypes
                   0x0000c0         0x48 build/default/production/main.o
  .debug_pubtypes
-                  0x000108        0x2ce build/default/production/initialization.o
+                  0x000108        0x2ad build/default/production/initialization.o
  .debug_pubtypes
-                  0x0003d6         0x69 build/default/production/i2c.o
+                  0x0003b5         0x69 build/default/production/i2c.o
  .debug_pubtypes
-                  0x00043f         0x1f build/default/production/app.o
+                  0x00041e         0x1f build/default/production/app.o
  .debug_pubtypes
-                  0x00045e         0x1f build/default/production/uart.o
+                  0x00043d         0x1f build/default/production/uart.o
  .debug_pubtypes
-                  0x00047d         0x5b build/default/production/interrupt.o
+                  0x00045c         0x5b build/default/production/interrupt.o
  .debug_pubtypes
-                  0x0004d8         0x12 build/default/production/lux.o
+                  0x0004b7         0x12 build/default/production/lux.o
  .debug_pubtypes
-                  0x0004ea         0x5f build/default/production/adc.o
+                  0x0004c9         0x5f build/default/production/adc.o
 
 __c30_signature
-                  0x000549         0x54
+                  0x000528         0x54
  __c30_signature
-                  0x000549          0x6 build/default/production/main.o
+                  0x000528          0x6 build/default/production/main.o
  __c30_signature
-                  0x00054f          0x6 build/default/production/initialization.o
+                  0x00052e          0x6 build/default/production/initialization.o
  __c30_signature
-                  0x000555          0x6 build/default/production/i2c.o
+                  0x000534          0x6 build/default/production/i2c.o
  __c30_signature
-                  0x00055b          0x6 build/default/production/app.o
+                  0x00053a          0x6 build/default/production/app.o
  __c30_signature
-                  0x000561          0x6 build/default/production/uart.o
+                  0x000540          0x6 build/default/production/uart.o
  __c30_signature
-                  0x000567          0x6 build/default/production/interrupt.o
+                  0x000546          0x6 build/default/production/interrupt.o
  __c30_signature
-                  0x00056d          0x6 build/default/production/lux.o
+                  0x00054c          0x6 build/default/production/lux.o
  __c30_signature
-                  0x000573          0x6 build/default/production/adc.o
+                  0x000552          0x6 build/default/production/adc.o
  __c30_signature
-                  0x000579          0x6 c:/program files (x86)/microchip/xc16/v1.35/bin/bin/../../lib\liblega-pic30-elf.a(crt0_extended24.o)
+                  0x000558          0x6 c:/program files (x86)/microchip/xc16/v1.35/bin/bin/../../lib\liblega-pic30-elf.a(crt0_extended24.o)
  __c30_signature
-                  0x00057f          0x6 c:/program files (x86)/microchip/xc16/v1.35/bin/bin/../../lib\liblega-pic30-elf.a(data_init_24.o)
+                  0x00055e          0x6 c:/program files (x86)/microchip/xc16/v1.35/bin/bin/../../lib\liblega-pic30-elf.a(data_init_24.o)
  __c30_signature
-                  0x000585          0x6 c:/program files (x86)/microchip/xc16/v1.35/bin/bin/../../lib\libm-elf.a(divsi3.daeo)
+                  0x000564          0x6 c:/program files (x86)/microchip/xc16/v1.35/bin/bin/../../lib\libm-elf.a(divsi3.daeo)
  __c30_signature
-                  0x00058b          0x6 c:/program files (x86)/microchip/xc16/v1.35/bin/bin/../../lib\libm-elf.a(modsi3.daeo)
+                  0x00056a          0x6 c:/program files (x86)/microchip/xc16/v1.35/bin/bin/../../lib\libm-elf.a(modsi3.daeo)
  __c30_signature
-                  0x000591          0x6 c:/program files (x86)/microchip/xc16/v1.35/bin/bin/../../lib\libm-elf.a(udivsi3.daeo)
+                  0x000570          0x6 c:/program files (x86)/microchip/xc16/v1.35/bin/bin/../../lib\libm-elf.a(udivsi3.daeo)
  __c30_signature
-                  0x000597          0x6 c:/program files (x86)/microchip/xc16/v1.35/bin/bin/../../lib\libm-elf.a(umodsi3.daeo)
-
-.nbss               0x0800          0x8
- .nbss              0x0800          0x8 build/default/production/main.o
-                    0x0800                  _eepromAddr
-                    0x0802                  _eepromBool
-                    0x0804                  _eepromW
-                    0x0806                  _eepromR
-
-.ndata              0x0808          0x2
- .ndata             0x0808          0x2 build/default/production/main.o
-                    0x0808                  _eepromCtr
+                  0x000576          0x6 c:/program files (x86)/microchip/xc16/v1.35/bin/bin/../../lib\libm-elf.a(umodsi3.daeo)
 
 .config_ALTI2C1
                   0x02af2c          0x2
@@ -1878,7 +1845,7 @@ __c30_signature
  .ivt._INT0Interrupt
                   0x000014          0x2 build/default/production/interrupt.o
 
-.text             0x0002be        0x526
+.text             0x0002be        0x52c
  .text            0x0002be        0x16c build/default/production/app.o
                   0x0002be                  _delay
                   0x0002e8                  _printInt
@@ -1894,25 +1861,21 @@ __c30_signature
                   0x0004ea                  _i2cStop
                   0x0004fc                  _myWriteByte
                   0x00053a                  _myReadByte
- .text            0x00057e        0x100 build/default/production/initialization.o
+ .text            0x00057e        0x102 build/default/production/initialization.o
                   0x00057e                  _InitApp
                   0x000590                  _InitClock
                   0x0005c8                  _InitGPIO
-                  0x0005e2                  _InitUART
-                  0x000618                  _InitInt0
-                  0x000630                  _InitI2C
-                  0x000646                  _InitADC
- .text            0x00067e         0x9a build/default/production/lux.o
-                  0x00067e                  _luxOn
-                  0x00069a                  _luxOff
-                  0x0006b6                  _luxRead
- .text            0x000718         0x80 build/default/production/uart.o
-                  0x000718                  _uart
- .text            0x000798         0x36 build/default/production/adc.o
-                  0x000798                  _adc1Grab
-                  0x0007ba                  _adc2Grab
- .text            0x0007ce         0x16 build/default/production/main.o
-                  0x0007ce                  _main
-
-.dinit            0x0007e4         0x10
- .dinit           0x0007e4         0x10 data_init
+                  0x0005e6                  _InitUART
+                  0x00061c                  _InitInt0
+                  0x000634                  _InitI2C
+                  0x00064a                  _InitADC
+ .text            0x000680         0x9a build/default/production/lux.o
+                  0x000680                  _luxOn
+                  0x00069c                  _luxOff
+                  0x0006b8                  _luxRead
+ .text            0x00071a         0x84 build/default/production/uart.o
+                  0x00071a                  _uart
+ .text            0x00079e         0x36 build/default/production/adc.o
+                  0x00079e                  _adcGrab
+ .text            0x0007d4         0x16 build/default/production/main.o
+                  0x0007d4                  _main
