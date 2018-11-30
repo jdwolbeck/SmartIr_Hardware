@@ -14,7 +14,6 @@ int16_t main(void)
 {
     InitApp();
     int delayVal = 1048;
-    luxOn();
     
     while(1)
     {

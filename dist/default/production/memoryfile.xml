@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <project>
-  <executable name="dist/default/production/SmartIr_Hardware.production.elf">
+  <executable name="dist/default/production/mplabs_lux_sensor.production.elf">
     <memory name="data">
       <units>bytes</units>
       <length>16384</length>
@@ -11,8 +11,8 @@
     <memory name="program">
       <units>bytes</units>
       <length>263424</length>
-      <used>3333</used>
-      <free>260091</free>
+      <used>2670</used>
+      <free>260754</free>
     </memory>
   </executable>
 </project>

@@ -4,8 +4,8 @@
 #include "main.h"
 #include "i2c.h"
 #include "app.h"
-#include "eeprom.h"
 #include "lux.h"
+#include "adc.h"
 
 void uart(char RXread)
 {
@@ -14,23 +14,30 @@ void uart(char RXread)
     switch (RXread)
     {
         case 'a':
-            adcVal = ADC1BUF0;
+            adcVal = adc1Grab();
             printInt(adcVal);
-        case 'r':
-            eepromRead(0);
+            U1TXREG = 0x0A;
+            U1TXREG = 0x0D;
             break;
-        case 'w':
-            eepromWrite(0, RXread);
+        case 'b':
+            adcVal = adc2Grab();
+            printInt(adcVal);
+            U1TXREG = 0x0A;
+            U1TXREG = 0x0D;
             break;
-        case '1':
+        case 'i':
+            luxOn();
+            break;
+        case 'o':
             value = luxRead();
             printInt(value);
             break;
-        case '2':
+        case 0xD:
             U1TXREG = 0x0A;
             U1TXREG = 0x0D;
             break;
         default:
+            U1TXREG = 'E';
             break;   
     }
 }

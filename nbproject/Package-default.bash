@@ -10,9 +10,9 @@ CND_CONF=default
 CND_DISTDIR=dist
 TMPDIR=build/${CND_CONF}/${IMAGE_TYPE}/tmp-packaging
 TMPDIRNAME=tmp-packaging
-OUTPUT_PATH=dist/${CND_CONF}/${IMAGE_TYPE}/SmartIr_Hardware.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
-OUTPUT_BASENAME=SmartIr_Hardware.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
-PACKAGE_TOP_DIR=smartirhardware/
+OUTPUT_PATH=dist/${CND_CONF}/${IMAGE_TYPE}/mplabs_lux_sensor.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
+OUTPUT_BASENAME=mplabs_lux_sensor.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
+PACKAGE_TOP_DIR=mplabsluxsensor/
 
 # Functions
 function checkReturnCode
@@ -57,15 +57,15 @@ mkdir -p ${TMPDIR}
 
 # Copy files and create directories and links
 cd "${TOP}"
-makeDirectory ${TMPDIR}/smartirhardware/bin
+makeDirectory ${TMPDIR}/mplabsluxsensor/bin
 copyFileToTmpDir "${OUTPUT_PATH}" "${TMPDIR}/${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}" 0755
 
 
 # Generate tar file
 cd "${TOP}"
-rm -f ${CND_DISTDIR}/${CND_CONF}/package/smartirhardware.tar
+rm -f ${CND_DISTDIR}/${CND_CONF}/package/mplabsluxsensor.tar
 cd ${TMPDIR}
-tar -vcf ../../../../${CND_DISTDIR}/${CND_CONF}/package/smartirhardware.tar *
+tar -vcf ../../../../${CND_DISTDIR}/${CND_CONF}/package/mplabsluxsensor.tar *
 checkReturnCode
 
 # Cleanup

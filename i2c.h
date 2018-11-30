@@ -4,7 +4,6 @@ extern int i2cBool, i2cW, i2cR, i2cAddr, i2cCtr;
 
 unsigned char myReadByte(unsigned short);
 bool myWriteByte(unsigned short, unsigned char);
-void i2cBusReset(void);
 void i2cIdle(void);
 int i2cAck(void);
 void i2cMAck(void);
